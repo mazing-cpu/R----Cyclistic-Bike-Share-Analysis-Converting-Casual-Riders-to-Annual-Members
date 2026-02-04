@@ -176,7 +176,8 @@ hourly_grouped <- bind_rows(
   group_by(year, day_type, hour, user_category) %>%
   summarise(number_of_rides = n(), .groups = 'drop')
 
-# 2. Create the Visual
+Visualization
+
 ggplot(hourly_grouped, aes(x = hour, y = number_of_rides, color = user_category)) +
   geom_line(linewidth = 1.2) +
   # Facet by Year (Rows) and Day Type (Columns)
@@ -229,10 +230,10 @@ avg_dur_2020 <- bike_trip_2020_v2 %>%
     user_category = str_to_title(member_casual)
   )
 
-# 3. Combine
+
 combined_avg_duration <- bind_rows(avg_dur_2019, avg_dur_2020)
 
-# 4. The Recommendation: Grouped Bar Chart with Labels
+
 ggplot(combined_avg_duration, aes(x = user_category, y = avg_duration, fill = user_category)) +
   geom_col(width = 0.7) +
   facet_wrap(~year) +
@@ -279,10 +280,9 @@ summary_weekly_2020 <- bike_trip_2020_v2 %>%
   summarise(number_of_rides = n(), .groups = 'drop') %>%
   mutate(year = "2020 Q1")
 
-# 3. Combine for plotting
+
 combined_weekly <- bind_rows(summary_weekly_2019, summary_weekly_2020)
 
-# 4. The "Beautiful" Weekly Comparison Chart
 ggplot(combined_weekly, aes(x = day_of_week, y = number_of_rides, fill = member_casual)) +
   geom_col(position = "dodge") +
   facet_wrap(~year) +
@@ -327,10 +327,9 @@ summary_2020 <- bike_trip_2020_v2 %>%
   summarise(number_of_rides = n(), .groups = 'drop') %>%
   mutate(year = "2020 Q1")
 
-# 3. Combine for plotting
 combined_data <- bind_rows(summary_2019, summary_2020)
 
-# 4. The "Beautiful" Bar Chart
+
 ggplot(combined_data, aes(x = month, y = number_of_rides, fill = member_casual)) +
   geom_col(position = "dodge") + # Puts Member/Casual bars side-by-side
   facet_wrap(~year) + # Creates the 2019 vs 2020 side-by-side view
@@ -384,7 +383,7 @@ casual_stations_2020 <- bike_trip_2020_v2 %>%
   rename(station_name = start_station_name) %>%
   slice_max(number_of_rides, n = 10)
 
-# 3. Combine for a side-by-side beautiful bar chart
+
 combined_casual_top10 <- bind_rows(casual_stations_2019, casual_stations_2020)
 
 ggplot(combined_casual_top10, aes(x = reorder(station_name, number_of_rides), y = number_of_rides)) +
