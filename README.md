@@ -1,7 +1,7 @@
 # R----Cyclistic-Bike-Share-Analysis-Converting-Casual-Riders-to-Annual-Members
 This project analyzes Cyclistic’s historical trip data from the first quarter of 2019 and 2020 to identify behavioral differences between annual members and casual riders. By examining metrics such as trip duration and weekly volume, the study provides data-driven insights to help design a marketing strategy for casual riders
 
-title: "Cyclistic Bike share 2020"
+title: "Cyclistic-Bike-Share-Analysis-Converting-Casual-Riders-to-Annual-Members"
 author: "Emmanuel Aryeetey"
 date: "2025-12-30"
 output:
